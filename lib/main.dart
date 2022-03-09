@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:xiagao/page/index.dart';
 
+import 'navigation/tab_navigation.dart';
+
 void main() {
   runApp(const MyApp());
 }

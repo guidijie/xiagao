@@ -15,10 +15,12 @@ class CustomBanner extends StatefulWidget{
   // CustomBanner({Key? key}) : super(key: key);
   CustomBanner(this.images, {Key? key, height, onTap}) : super(key: key) {
 
-    if (height != null)
+    if (height != null) {
       this.height = height;
-    if (onTap != null)
+    }
+    if (onTap != null) {
       this.onTap = onTap;
+    }
   }
 
 
@@ -40,14 +42,14 @@ class CustomBannerState extends State<CustomBanner>{
       keepPage: true, //是否保存当前 Page 的状态，如果保存，下次回复保存的那个 page，initialPage被忽略，
       //如果为 false 。下次总是从 initialPage 开始。
     );
-    _timer = Timer.periodic(const Duration(seconds: 4), (t) {
-      _curIndex++;
-      _pageController.animateToPage(
-        _curIndex,
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.fastOutSlowIn,
-      );
-    });
+    // _timer = Timer.periodic(const Duration(seconds: 4), (t) {
+    //   _curIndex++;
+    //   _pageController.animateToPage(
+    //     _curIndex,
+    //     duration: const Duration(milliseconds: 200),
+    //     curve: Curves.fastOutSlowIn,
+    //   );
+    // });
   }
 
 
@@ -66,7 +68,7 @@ class CustomBannerState extends State<CustomBanner>{
   /// 轮播图
   Widget _buildPageView() {
     var length = widget.images.length;
-    return SizedBox(
+    return Padding(padding: const EdgeInsets.only(top: 10, bottom: 20),child: SizedBox(
       height: widget.height,
       child: PageView.builder(
         controller: _pageController,
@@ -92,7 +94,7 @@ class CustomBannerState extends State<CustomBanner>{
           );
         },
       ),
-    );
+    ),);
   }
 
   // /// 轮播图小圆点

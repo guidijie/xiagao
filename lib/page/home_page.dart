@@ -3,15 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:xiagao/common/banner/custom_banner.dart';
 import 'package:xiagao/common/banner/list_item.dart';
 
-/// 日报
-class DailyPaperPage extends StatefulWidget {
-  const DailyPaperPage({Key? key}) : super(key: key);
+/// 日报页面
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key}) : super(key: key);
 
   @override
-  State<StatefulWidget> createState() => DailyPaperPageState();
+  _HomePageState createState() => _HomePageState();
 }
 
-class DailyPaperPageState extends State<DailyPaperPage> {
+class _HomePageState extends State<HomePage> {
+
   /// 列表假数据
   var listData = [
     {
@@ -75,51 +76,49 @@ class DailyPaperPageState extends State<DailyPaperPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // appBar: AppBar(title: Text('aaaaaaa')),
-        // 内容区域
+        // 内容背景
+        backgroundColor: Colors.white,
+        appBar: AppBar(
+          title: const Text('日报',
+              style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold)),
+          // appBar背景
+          backgroundColor: Colors.white,
+          centerTitle: true,
+          // 去除阴影线
+          elevation: 0,
+          actions: <Widget>[
+            IconButton(
+                icon: const Icon(
+                  Icons.search,
+                  color: Colors.black87,
+                ),
+                onPressed: () {
+                  // todo跳转到搜索页面
+                  // NavigatorManager.to(VideoSearchPage());
+                }),
+          ],
+        ),
+        // body: Column(
+        //   children: [
+        //     _shufflingFigure(),
+        //     Expanded(
+        //       child: _list(),
+        //     ),
+        //   ],
+        // ),
         body: Padding(
-      padding: const EdgeInsets.fromLTRB(15, 45, 15, 0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 30, right: 0),
-                    child: const Text('日报',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold)),
-                  ),
-                  flex: 1),
-              const Icon(
-                Icons.search,
-                color: Colors.black,
-                size: 30,
-              )
-            ],
-          ),
-          // _shufflingFigure(),
-          Expanded(
-            child: _list(),
-          ),
-        ],
-      ),
-    ));
+          padding: EdgeInsets.all(10),
+          child: _list(),
+        )
+    );
   }
 
   /// 获取列表
   Widget _list() {
-    return ListItem(listData);
+    return ListItem(listData, isShowBanner: true);
   }
 
-  /// 轮播图
-  Widget _shufflingFigure() {
-    List<String> images = [
-      'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-      'https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    ];
-    return CustomBanner(images);
-  }
 }

@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:xiagao/page/daily_paper.dart';
+import 'package:xiagao/page/daily_paper_page.dart';
+import 'package:xiagao/page/discover_page.dart';
 import 'package:xiagao/page/home_content.dart';
+import 'package:xiagao/page/home_page.dart';
 
 class Index extends StatefulWidget {
   const Index({Key? key}) : super(key: key);
@@ -15,8 +17,9 @@ class IndexState extends State<Index> {
 
   // 导航页
   final _pages = <Widget>[
-    const DailyPaper(),
-    const HomeContent(),
+    const HomePage(),
+    // const DailyPaperPage(),
+    const DiscoverPaperPage(),
     const HomeContent(),
     const HomeContent()
   ];
