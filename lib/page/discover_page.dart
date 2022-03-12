@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'discover/category_page.dart';
 import 'home_content.dart';
 
 /// 发现页
@@ -94,6 +95,7 @@ class DiscoverPaperPageState extends State<StatefulWidget> {
                     },
                     children: const <Widget>[
                       HomeContent(),
+                      CategoryPage(),
                       HomeContent(),
                     ]))
           ],
