@@ -101,16 +101,8 @@ class _HomePageState extends State<HomePage> {
                 }),
           ],
         ),
-        // body: Column(
-        //   children: [
-        //     _shufflingFigure(),
-        //     Expanded(
-        //       child: _list(),
-        //     ),
-        //   ],
-        // ),
         body: Padding(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(15),
           child: _list(),
         )
     );
