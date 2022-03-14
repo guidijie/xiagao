@@ -1,19 +1,7 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:xiagao/common/banner/custom_banner.dart';
-import 'package:xiagao/common/list/list_item.dart';
 
-/// 日报
-class DailyPaperPage extends StatefulWidget {
-  const DailyPaperPage({Key? key}) : super(key: key);
-
-  @override
-  State<StatefulWidget> createState() => DailyPaperPageState();
-}
-
-class DailyPaperPageState extends State<DailyPaperPage> {
+class StaticData {
   /// 列表假数据
-  var listData = [
+  static var listData = [
     {
       'type': '旅行',
       'title': '浪漫延时摄影，三星S21镜头下的旧金山',
@@ -71,55 +59,4 @@ class DailyPaperPageState extends State<DailyPaperPage> {
       'timeLength': '06.32'
     },
   ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        // appBar: AppBar(title: Text('aaaaaaa')),
-        // 内容区域
-        body: Padding(
-      padding: const EdgeInsets.fromLTRB(15, 45, 15, 0),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Expanded(
-                  child: Container(
-                    padding: const EdgeInsets.only(left: 30, right: 0),
-                    child: const Text('日报',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            fontSize: 18, fontWeight: FontWeight.bold)),
-                  ),
-                  flex: 1),
-              const Icon(
-                Icons.search,
-                color: Colors.black,
-                size: 30,
-              )
-            ],
-          ),
-          // _shufflingFigure(),
-          Expanded(
-            child: _list(),
-          ),
-        ],
-      ),
-    ));
-  }
-
-  /// 获取列表
-  Widget _list() {
-    return ListItem(listData);
-  }
-
-  /// 轮播图
-  Widget _shufflingFigure() {
-    List<String> images = [
-      'https://images.unsplash.com/photo-1477346611705-65d1883cee1e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-      'https://images.unsplash.com/photo-1498550744921-75f79806b8a7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80',
-      'https://images.unsplash.com/photo-1451187580459-43490279c0fa?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-    ];
-    return CustomBanner(images);
-  }
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:xiagao/utils/static_data.dart';
 
 class CategoryPage extends StatefulWidget {
   const CategoryPage({Key? key}) : super(key: key);
@@ -10,6 +11,15 @@ class CategoryPage extends StatefulWidget {
 
 class _CategoryPageState extends State<CategoryPage>
     with AutomaticKeepAliveClientMixin {
+
+  late var data = [];
+
+  @override
+  void initState() {
+    super.initState();
+    data = StaticData.listData;
+  }
+
   @override
   Widget build(BuildContext context) {
     super.build(context);
@@ -17,25 +27,22 @@ class _CategoryPageState extends State<CategoryPage>
         padding: const EdgeInsets.all(5),
         decoration: const BoxDecoration(color: Color(0xfff2f2f2)),
         child: GridView.builder(
-            itemCount: 15,
+            itemCount: data.length,
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2, mainAxisSpacing: 5, crossAxisSpacing: 5),
             itemBuilder: (context, index) {
               return Container(
-                decoration: BoxDecoration(
-                    color: Colors.amber,
-                    borderRadius: BorderRadius.circular((6))
+                decoration: ShapeDecoration(
+                    image: DecorationImage(
+                        image: AssetImage(data[index]['viewImageUrl']!),
+                        fit: BoxFit.cover
+                    ),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadiusDirectional.circular(4))
                 ),
-                // decoration: ShapeDecoration(
-                    // image: DecorationImage(
-                    //     image: AssetImage('assets/images/dailyPaper/daily_paper_1.png'),
-                    //     fit: BoxFit.fitWidth
-                    // ),
-                    // shape: RoundedRectangleBorder(
-                    //     borderRadius: BorderRadiusDirectional.circular(4))),
                 width: double.maxFinite,
                 alignment: Alignment.center,
-                child: const Text('#创意'),
+                child: Text('#' + data[index]['type']!, style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
               );
             }
         )
